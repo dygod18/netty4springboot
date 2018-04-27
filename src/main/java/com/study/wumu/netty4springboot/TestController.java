@@ -1,4 +1,4 @@
-package com.wacai.wumu.netty4springboot;
+package com.study.wumu.netty4springboot;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,7 +13,7 @@ public class TestController {
     @RequestMapping("/test")
     @ResponseBody
     public String test(){
-        System.out.println("success");
+        System.out.println("success：" + System.currentTimeMillis());
         return "success";
     }
 

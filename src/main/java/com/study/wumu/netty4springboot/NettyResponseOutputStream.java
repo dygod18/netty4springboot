@@ -1,4 +1,4 @@
-package com.wacai.wumu.netty4springboot;
+package com.study.wumu.netty4springboot;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

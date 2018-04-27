@@ -1,4 +1,4 @@
-package com.wacai.wumu.netty4springboot.benchmarkTest;
+package com.study.wumu.netty4springboot.benchmarkTest;
 
 import org.openjdk.jmh.annotations.*;
 
@@ -12,21 +12,21 @@ import java.net.URL;
 /**
  * Created by dydy on 2018/1/18.
  */
-@BenchmarkMode(Mode.AverageTime)
+@BenchmarkMode(Mode.Throughput)
 public class Netty4SpringbootBeachmark {
 
     @Benchmark
     @Warmup(iterations = 10)
     @Measurement(iterations = 20)
-    public void getByTomcat(){
-        getUrl("http://localhost:38094/test", false);
+    public void getByFetch(){
+        getUrl("http://localhost:8080/loan/kaleidoscope/proxy/credit/fetch?uid=1234", false);
     }
 
     @Benchmark
     @Warmup(iterations = 10)
-    @Measurement(iterations = 20)
+    @Measurement(iterations = 10)
     public void getByNetty() {
-        getUrl("http://localhost:8080/test", false);
+        getUrl("http://127.0.0.1:8080/test", false);
     }
 
     private String getUrl(String url, boolean read) {
@@ -39,7 +39,7 @@ public class Netty4SpringbootBeachmark {
             connection.setDoOutput(false);
             connection.setUseCaches(false);
             connection.setRequestMethod("GET");
-            connection.setConnectTimeout(200);
+            connection.setConnectTimeout(1000);
             connection.setDoInput(true);
             connection.connect();
             if (read) {
@@ -54,6 +54,7 @@ public class Netty4SpringbootBeachmark {
             }
         } catch (IOException e) {
             System.out.println("连接服务器'" + url + "'时发生错误：" + e.getMessage());
+            e.printStackTrace();
         } finally {
             try {
                 if (null != br) {

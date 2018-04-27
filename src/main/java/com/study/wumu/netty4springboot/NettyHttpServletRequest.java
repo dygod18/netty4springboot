@@ -1,4 +1,4 @@
-package com.wacai.wumu.netty4springboot;
+package com.study.wumu.netty4springboot;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.HttpRequest;

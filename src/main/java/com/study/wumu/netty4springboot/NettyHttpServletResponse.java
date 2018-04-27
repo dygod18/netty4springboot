@@ -1,4 +1,4 @@
-package com.wacai.wumu.netty4springboot;
+package com.study.wumu.netty4springboot;
 
 import com.google.common.base.Optional;
 import com.google.common.net.MediaType;

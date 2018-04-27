@@ -1,4 +1,4 @@
-package com.wacai.wumu.netty4springboot;
+package com.study.wumu.netty4springboot;
 
 import com.google.common.base.StandardSystemProperty;
 import io.netty.bootstrap.ServerBootstrap;
@@ -57,9 +57,9 @@ public class NettyContainer implements EmbeddedServletContainer {
 
         sb.option(ChannelOption.TCP_NODELAY, true)
                 .option(ChannelOption.SO_REUSEADDR, true)
-                .option(ChannelOption.SO_BACKLOG, 100);
+                .option(ChannelOption.SO_BACKLOG, 1024);
 
-        servletExecutor = new DefaultEventExecutorGroup(50);
+        servletExecutor = new DefaultEventExecutorGroup(2);
         sb.childHandler(new ChannelInitializer<SocketChannel>() {
             @Override
             protected void initChannel(SocketChannel ch) throws Exception {

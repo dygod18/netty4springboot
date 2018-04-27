@@ -1,4 +1,4 @@
-package com.wacai.wumu.netty4springboot;
+package com.study.wumu.netty4springboot;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -41,6 +41,10 @@ public class ServletContentHandler extends ChannelInboundHandlerAdapter {
             }
             ctx.fireChannelRead(servletRequest);
         }
+    }
+
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        inputstream.close();
     }
 
 }
